@@ -6,8 +6,7 @@ function App() {
   // URL của Backend. 
   // LƯU Ý: Lúc đầu chạy local thì để localhost. 
   // Khi deploy xong Backend, ta sẽ quay lại đây thay link mới.
-  const API_URL = 'http://localhost:5000/api/tasks';
-
+const API_URL = 'https://my-api.onrender.com/api/tasks';
   useEffect(() => {
     fetch(API_URL)
       .then(res => res.json())
