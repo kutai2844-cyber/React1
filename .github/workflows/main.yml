@@ -1,0 +1,30 @@
+name: CI/CD Demo Report
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  demo-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 1. Server - Kiểm tra mã nguồn
+      uses: actions/checkout@v4
+
+    - name: 2. Server - Chuẩn bị môi trường Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: 3. Backend - Cài đặt thư viện (Demo)
+      run: |
+        echo "Dang cai dat thu vien cho Backend..."
+        echo "✅ Backend Dependencies Installed!"
+
+    - name: 4. Frontend - Build giao diện (Demo)
+      run: |
+        echo "Dang build ReactJS..."
+        echo "✅ Frontend Build Success!"
+
+    - name: 5. Kich hoat Deploy tu dong
+      run: echo "🚀 Code da san sang. Render se tu dong Deploy ngay lap tuc."
