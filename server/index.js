@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 // 👇👇👇 THAY LINK BACKEND CỦA BẠN VÀO DƯỚI ĐÂY 👇👇👇
-const API_URL = "https://dashboard.render.com/web/srv-d51qs1m3jp1c73f3299g"; 
+const API_URL = "https://my-be-0cg7.onrender.com"; 
 
 function App() {
   const [tasks, setTasks] = useState([]);
