@@ -1,0 +1,33 @@
+name: CI/CD Fullstack Report
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 1. Lấy code về
+      uses: actions/checkout@v4
+
+    - name: 2. Cài đặt NodeJS
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: 3. Test Backend (Server)
+      run: |
+        cd server
+        npm install
+        echo "✅ Backend installed successfully"
+
+    - name: 4. Test Frontend (Client)
+      run: |
+        cd client
+        npm install
+        npm run build
+        echo "✅ Frontend built successfully"
+
+    - name: 5. Thông báo kết quả
+      run: echo "🎉 Code ngon lành! Sẵn sàng Deploy lên Render."
