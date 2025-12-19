@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 // 👇 THAY LINK CỦA BẠN VÀO ĐÂY (Link my-be trên Render) 👇
-const API_URL = "https://my-be-xxxx.onrender.com"; 
+const API_URL = "https://my-be-0cg7.onrender.com"; 
 
 function App() {
   const [tasks, setTasks] = useState([]);
