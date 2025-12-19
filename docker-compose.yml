@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  # --- CẤU HÌNH BACKEND ---
+  server:
+    build: ./server              # Lấy Dockerfile từ thư mục server
+    container_name: node-backend
+    ports:
+      - "5000:5000"              # Map cổng máy thật : cổng container
+    environment:
+      - PORT=5000
+    # Volumes giúp đồng bộ code: Bạn sửa file ở ngoài, trong Docker tự cập nhật
+    volumes:
+      - ./server:/app
+      - /app/node_modules        # Giữ nguyên node_modules của container, không cho máy thật ghi đè
+
+  # --- CẤU HÌNH FRONTEND ---
+  client:
+    build: ./client              # Lấy Dockerfile từ thư mục client
+    container_name: react-frontend
+    ports:
+      - "5173:5173"              # Map cổng máy thật : cổng container
+    volumes:
+      - ./client:/app
+      - /app/node_modules        # Giữ nguyên node_modules của container
+    # Môi trường đặc biệt cho Vite chạy mượt trên Docker Windows
+    environment:
+      - CHOKIDAR_USEPOLLING=true 
+    stdin_open: true             # Giữ terminal mở để không bị thoát
+    tty: true
+    depends_on:
+      - server                   # Chờ server chạy xong thì client mới chạy
